@@ -15,10 +15,21 @@ form.addEventListener('submit', e => {
         }
     });
 
-    if (score !== 0){
-        result.classList.remove('d-none');
-        console.log(result.querySelector('span').textContent = `${score}%`)
-    }
+    // show result on page
+    scrollTo(0,0);
+
+    result.classList.remove('d-none');
+    
+    let output =0;
+    const timer = setInterval(() => {
+        result.querySelector('span').textContent = `${output}%`;
+
+        if(output === score){
+            clearInterval(timer);
+        } else {
+            output++;
+        }
+    }, 10);
 });
 
 
